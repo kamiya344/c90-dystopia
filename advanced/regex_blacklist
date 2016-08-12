@@ -1,0 +1,4 @@
+^http://.*/.*\.torrent$
+^http://shiro\.ma/.*$
+^https://shiro\.ma/.*$
+^http://comp\.is\.uec\.ac\.jp/.*$
