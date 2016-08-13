@@ -28,8 +28,8 @@ iptables -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
 # allow input from LAN
 iptables -A INPUT -i ${LAN_IF} -s ${LAN_IP} -j ACCEPT
 
-# only ssh and http(s) are allowed
-iptables -A INPUT -i ${WAN_IF} -p tcp -m multiport --dports 22,80,443 -j ACCEPT
+# only ssh is allowed
+iptables -A INPUT -i ${WAN_IF} -p tcp --dport 22 -j ACCEPT
 
 # accept forward request from LAN ip range
 iptables -A FORWARD -i ${LAN_IF} -s ${LAN_IP} -j ACCEPT
