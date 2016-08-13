@@ -3,9 +3,6 @@
 WAN_IF=enp3s0
 LAN_IF=enp1s0f0
 
-WAN_IF_IP=192.168.200.40
-LAN_IF_IP=192.168.210.254
-
 LAN_IP=192.168.210.0/24
 WAN_IP=192.168.200.0/24
 
@@ -33,7 +30,7 @@ iptables -A INPUT -i ${LAN_IF} -p udp --sport 67:68 --dport 67:68 -j ACCEPT
 iptables -A INPUT -i ${LAN_IF} -s ${LAN_IP} -p tcp -m multiport --dports 22,53,80,3128 -j ACCEPT
 iptables -A INPUT -i ${LAN_IF} -s ${LAN_IP} -p udp -m multiport --dports 22,53,80,3128 -j ACCEPT
 
-# only ssh from WAN is allowed
+# only ssh is allowed
 iptables -A INPUT -i ${WAN_IF} -p tcp --dport 22 -j ACCEPT
 
 # accept forward request from LAN ip range
