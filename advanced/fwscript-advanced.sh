@@ -34,7 +34,7 @@ iptables -A INPUT -i ${LAN_IF} -s ${LAN_IP} -p udp -m multiport --dports 22,53,8
 iptables -A INPUT -i ${WAN_IF} -p tcp --dport 22 -j ACCEPT
 
 # accept forward request from LAN ip range
-iptables -A FORWARD -i ${LAN_IF} -s ${LAN_IP} -o ${WAN_IF} -d ${WAN_IP} -j ACCEPT
+iptables -A FORWARD -i ${LAN_IF} -s ${LAN_IP} -o ${WAN_IF} ! -d 192.168.200.1 -j ACCEPT
 
 # masquerade LAN ip to WAN IF ip address
 iptables -t nat -A POSTROUTING -s ${LAN_IP} -o ${WAN_IF} -j MASQUERADE
